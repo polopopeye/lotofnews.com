@@ -1,0 +1,40 @@
+{{define "test"}}
+{{template "head" .}}
+{{template "header" .}}
+<h3>Hola {{ .Nombre }}</h3><br>
+<img width="50%" src="../assets/img/1.gif" alt="Bienvenid@">
+<audio src="../assets/files/burrito.mp3" autoplay="yes" controls></audio>
+
+<h6>has nacido en {{ .FechaNac }} tu correo es {{ .Email }}</h6>
+<script type="text/javascript" src="../assets/js/hola.js"></script>
+{{template "footer" .}}
+{{ end }}
+
+{{define "home"}}
+{{template "head" .}}
+{{template "header" .}}
+<!-- {{template "carousel" .}}-->
+{{template "FeatureCarouselCards" .}}
+{{template "homepag" .}}
+{{template "footer" .}}
+{{ end }}
+<!-- CATEGORIA POST POR -->
+{{define "cat"}}
+{{template "head" .}}
+{{template "header" .}}
+<!-- {{template "carousel" .}}-->
+<!-- {{template "FeatureCarouselCards" .}}-->
+{{template "catlist" .}}
+{{template "footer" .}}
+{{ end }}
+<!-- SINGLE NEW-->
+{{define "singlenew"}}
+{{template "head" .}}
+{{template "header" .}}
+<!-- {{template "carousel" .}}-->
+<!-- {{template "FeatureCarouselCards" .}}-->
+{{template "headersinglenew" .}}
+{{template "singlenewtemp" .}}
+{{template "comments" .}}
+{{template "footer" .}}
+{{ end }}

@@ -1,0 +1,27 @@
+package main
+
+import (
+	"fmt"
+
+	"./models"
+)
+
+func main() {
+	models.CreateConnection()
+	result := models.ExistTable("newsorigin")
+	fmt.Println(result)
+
+	models.Ping()
+	models.CloseConnection()
+}
+
+// UID, Lang, Titulo, Content, Fecha, Source
+//
+//
+// Categorias, Ocio(37), Viajes(7),
+//
+// UID va a ser lang+nombrecat+UIDpost -
+// UID, Lang, NombreCat, UIDpost, Fecha,
+//
+//
+// UID, Lang, NombreCat, UIDpost, Fecha,

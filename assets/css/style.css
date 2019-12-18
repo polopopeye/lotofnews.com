@@ -1,0 +1,14 @@
+body{
+  background: yellow;
+  color: red;
+}
+.carousel-indicators{
+  background-color: red;
+}
+#homepag{
+  margin: auto;
+}
+#loadmorepost{
+  zoom:1.5;
+  text-align: center;
+}
