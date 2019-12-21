@@ -1,18 +1,24 @@
 {{define "test"}}
 {{template "head" .}}
 {{template "header" .}}
-<h3>Hola {{ .Nombre }}</h3><br>
-<img width="50%" src="../assets/img/1.gif" alt="Bienvenid@">
+<center>
+<h3 >Noo! Algo esta sucediendo...</h3><br>
+<h1>Error 500</h1><br>
+<p style="width:80%">Tenemos un error en nuestro servidor, lo sentimos la web no esta funcionando como deberia por ahora,
+mientras hechamos un vistazo e intentamos arreglarla, puedes esperar escuchando musica y jugando.</p>
+<img width="50%" src="../assets/img/1.gif" alt="Bienvenid@"><br>
 <audio src="../assets/files/burrito.mp3" autoplay="yes" controls></audio>
+<br>
 
-<h6>has nacido en {{ .FechaNac }} tu correo es {{ .Email }}</h6>
-<script type="text/javascript" src="../assets/js/hola.js"></script>
+<div style="max-width:80%;">
+<script src="https://cdn.htmlgames.com/embed.js?game=Pizzeria&amp;&amp;bgcolor=white"></script>
+</div>
 {{template "footer" .}}
 {{ end }}
 
 {{define "home"}}
-{{template "head" .}}
-{{template "header" .}}
+{{template "head" .Datos}}
+{{template "header" .Datos}}
 <!-- {{template "carousel" .}}-->
 {{template "FeatureCarouselCards" .}}
 {{template "homepag" .}}

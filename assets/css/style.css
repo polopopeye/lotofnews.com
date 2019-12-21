@@ -12,3 +12,58 @@ body{
   zoom:1.5;
   text-align: center;
 }
+.bd-placeholder-img{
+  background-size: contain !important;
+}
+.carousel-control-prev {
+    left: 0;
+    background: linear-gradient(90deg,
+black 0%, rgba(0, 0, 0, 0.55) 35%,
+    rgba(0, 212, 255, 0) 100%);
+}
+.carousel-control-next {
+    right: 0;
+    background: linear-gradient(270deg,
+black 0%, rgba(0, 0, 0, 0.55) 35%,
+    rgba(0, 212, 255, 0) 100%);
+}
+.carouselcol{
+  font-size: 1.5pc;
+padding: 2pc;
+float:right;
+}
+
+.titulocarouselpost{
+  font-size: 2.25rem;
+margin: auto;
+text-align: center;
+padding: 0.7pc;
+}
+.logofoot {
+    max-width: 100%;
+    height: 100px;
+    padding: 1pc;
+}
+/* .carousel-fade .carousel-inner .item {
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity !important;
+}
+.carousel-fade .carousel-inner .active {
+  opacity: 1 !important;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0 !important;
+  z-index: 1 !important;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1 !important;
+}
+.carousel-fade .carousel-control {
+  z-index: 2 !important;
+} */

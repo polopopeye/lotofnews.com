@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"html/template"
 	"log"
 	"net/http"
@@ -8,6 +9,11 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/ip2location/ip2location-go"
+
+	"lotofnews.com/models"
+
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
 type Homeinterface struct {
@@ -19,6 +25,14 @@ type Homeinterface struct {
 	Fecha    string
 	Pais     string
 }
+
+type homedata struct {
+	Featuredarticleshome []*models.Articles
+	Articleshome         []*models.Articles
+	Datos                Homeinterface
+}
+
+//structs by Type
 
 var Inicio = template.Must(template.New("Inicio").ParseGlob("templates/*.html"))
 var ip = "95.169.231.127"
@@ -33,20 +47,29 @@ func Test(w http.ResponseWriter, r *http.Request) {
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
+
+	c := models.GetClient()
+	err := c.Ping(context.Background(), readpref.Primary())
+	if err != nil {
+		log.Fatal("Couldn't connect to mongo database", err)
+	}
 	ip2location.Open("./IP-COUNTRY.BIN")
 	results := ip2location.Get_all(ip)
 	current_time := time.Now().Local()
-	//	funciones := template.FuncMap{}
 	datos := Homeinterface{"Kenneth", 1996, "kennethsuarez@gmx.com", "Home", "Desc", current_time.Format("02-01-2006"), results.Country_long}
-	//header := template.Must(template.ParseFiles("templates/header.html", "templates/home.html"))
+	articleshome := models.LastArticles(c, bson.M{})
+	featuredarticleshome := models.LastArticles(c, bson.M{"Featured": true})
 
-	//	home := template.Must(template.ParseFiles())
-	//	footer := template.Must(template.ParseFiles())
+	datos2 := homedata{featuredarticleshome, articleshome, datos}
 
-	Inicio.ExecuteTemplate(w, "home", datos)
-	// home.Execute(w, datos)
-	// footer.Execute(w, datos)
+	//println(articleshome)
+	// for _, article := range articleshome {
+	// 	log.Println(article.Lang, article.Titulo, article.Content, article.Fecha, article.Source, article.Cat)
+	// }
+
+	w.Header().Set("Content-Type", "text/html")
+
+	Inicio.ExecuteTemplate(w, "home", datos2)
 
 }
 
